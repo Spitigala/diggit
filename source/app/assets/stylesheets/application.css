@@ -41,7 +41,7 @@ h1#logo {
 
 .top-20-list {
   width: 70%;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 ol {
@@ -50,6 +50,7 @@ ol {
 
 div.album-artwork {
   width: 150px;
+  border:
 }
 
 div.song {
@@ -57,14 +58,25 @@ div.song {
   left: 0;
   right: 0;
   margin: auto;
+  margin-bottom: 20px;
   width: 75%;
   max-height: 250px;
   padding: 10px;
+  padding-bottom: 15px;
+  padding-left: 15px;
   border-radius: 10px;
+  background-color: #F2F2F2;
 }
 
 div.song h4 {
   font-size: 1.3em;
+}
+
+div.song div{
+  display: inline-block;
+}
+div.song audio{
+  bottom: 0;
 }
 
 
