@@ -24,6 +24,7 @@ h1#logo {
   width: 100%;
   background-color: black;
   position: fixed;
+  z-index: 50;
 }
 .nav ul {
   float: right;
@@ -38,7 +39,6 @@ h1#logo {
 .nav ul li:hover {
   color: yellow;
 }
-
 .top-20-list {
   width: 70%;
   margin-top: 150px;
