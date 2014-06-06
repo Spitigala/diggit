@@ -35,8 +35,36 @@ h1#logo {
   color: white;
   margin-right: 10px;
 }
-
 .nav ul li:hover {
   color: yellow;
 }
+
+.top-20-list {
+  width: 70%;
+  margin-top: 100px;
+}
+
+ol {
+  list-style: none;
+}
+
+div.album-artwork {
+  width: 150px;
+}
+
+div.song {
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 75%;
+  max-height: 250px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+div.song h4 {
+  font-size: 1.3em;
+}
+
 
