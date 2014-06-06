@@ -3,13 +3,18 @@
 <head>
   <title>Diggit</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag    "foundation", media: "all", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag    "foundation.min", media: "all", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag    "normalize", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="nav">
+  <h1 id="logo">Diggit</h1>
+  <ul>
+    <li>Genres</li>
+    <li>Recent Uploads</li>
+    <li>Your Profile</li>
+  </ul>
+</div>
 
 <%= yield %>
 
