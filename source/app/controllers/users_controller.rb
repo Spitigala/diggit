@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  # before_action :authenticate, except: [:show, :new]
 
   # def index
   # end
 
   def show
     @user = User.find(params[:id])
+    @apple = "Apple"
   end
 
   def new
@@ -23,7 +25,8 @@ class UsersController < ApplicationController
   # end
 
   def destroy
-    User.find(params[:id]).destroy
+    # User.find(params[:id]).destroy
+
   end
 
   def login
@@ -32,5 +35,11 @@ class UsersController < ApplicationController
 
   def logout
     #NEED TO ADD CUSTOM ROUTE
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation, :password_digest)
   end
 end
