@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
 h1#logo {
   width: 200px;
   float: left;
