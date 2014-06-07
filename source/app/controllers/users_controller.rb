@@ -25,16 +25,16 @@ class UsersController < ApplicationController
   # end
 
   def destroy
-    # User.find(params[:id]).destroy
-
+    User.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   def login
-    #NEED TO ADD CUSTOM ROUTE
+    #params should come from AJAX
   end
 
   def logout
-    #NEED TO ADD CUSTOM ROUTE
+    #params should come from AJAX
   end
 
   private

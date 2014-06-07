@@ -53,19 +53,32 @@ describe UsersController do
 
     it "redirects to root path" do
       post :create, user: attributes_for(:user)
-      expect(response.status).to eq(302)
+      expect(response).to redirect_to root_path
     end
   end
 
   context "#destroy" do
-    it "removes requested user from database"
-    it "redirects to root path"
+    it "removes requested user from database" do
+      expect {
+        delete :destroy, id: user
+      }.to change{ User.count }.by(-1)
+    end
+
+    it "redirects to root path" do
+      delete :destroy, id: user
+      expect(response).to redirect_to root_path
+    end
   end
 
   context "#login" do
+    it "with valid credentials"
+    it "with invalid credentials"
+    it "redirects to root_path"
   end
 
   context "#logout" do
+    it "clears user session"
+    it "redirects to root_path"
   end
 
 end
