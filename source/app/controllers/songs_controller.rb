@@ -33,9 +33,23 @@ class SongsController < ApplicationController
   end
 
   def upvote
+    if Vote.where(voteable_type: "Song").find_by(voteable_id: params[:id])
+      vote = Vote.where(voteable_type: "Song").find_by(voteable_id: params[:id])
+      vote.update_attribute("value", 1)
+    else
+      Vote.create(vote_params)
+    end
+    render nothing: true
   end
 
   def downvote
+    if Vote.where(voteable_type: "Song").find_by(voteable_id: params[:id])
+      vote = Vote.where(voteable_type: "Song").find_by(voteable_id: params[:id])
+      vote.update_attribute("value", -1)
+    else
+      Vote.create(vote_params)
+    end
+    render nothing: true
   end
 
   private
@@ -43,5 +57,10 @@ class SongsController < ApplicationController
   def song_params
     params.require(:song).permit(:title, :artist, :album)
   end
+
+  def vote_params
+    params.require(:vote).permit(:user_id, :votable, :value)
+  end
+
 
 end

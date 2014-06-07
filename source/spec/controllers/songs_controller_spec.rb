@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe SongsController do
   let!(:song) { create :song }
+  let!(:user) { create :user }
 
   context '#index' do
     it 'is sucessful' do
@@ -68,25 +69,44 @@ describe SongsController do
         expect(response).to redirect_to new_song_path
       }.to_not change(Song, :count)
     end
-
   end
 
   context '#destroy' do
-
     it 'deletes specified song' do
       expect {
         delete :destroy, id: song
       }.to change(Song, :count).by(-1)
     end
-
   end
 
   context '#upvote' do
-    it 'increases vote count for song by 1'
+    it 'increases vote record count by 1 if user has not already voted' do
+      expect {
+        post :upvote, id: song, vote: {user_id: user.id, voteable: song, value: 1}
+      }.to change(Vote, :count).by(1)
+    end
+
+    it 'does NOT increase vote record count if user has already voted' do
+      Vote.create(user_id: user.id, voteable: song, value: 1)
+      expect {
+        post :upvote, id: song, vote: {user_id: user.id, voteable: song, value: 1}
+      }.to_not change(Vote, :count)
+    end
   end
 
   context '#downvote' do
-    it 'decreases vote count for song by 1'
+    it 'increases vote record count by 1 if user has not already voted' do
+      expect {
+        post :downvote, id: song, vote: {user_id: user.id, voteable: song, value: -1}
+      }.to change(Vote, :count).by(1)
+    end
+
+    it 'does NOT increase vote record count if user has already voted' do
+      Vote.create(user_id: user.id, voteable: song, value: 1)
+      expect {
+        post :upvote, id: song, vote: {user_id: user.id, voteable: song, value: 1}
+      }.to_not change(Vote, :count)
+    end
   end
 
 end
