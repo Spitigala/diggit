@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140606162831) do
   enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
-    t.text     "content"
+    t.text     "content",    null: false
     t.integer  "song_id"
     t.integer  "user_id"
     t.integer  "parent_id"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20140606162831) do
   end
 
   create_table "songs", force: true do |t|
-    t.string   "title"
-    t.string   "artist"
+    t.string   "title",      null: false
+    t.string   "artist",     null: false
     t.string   "album"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -35,11 +35,8 @@ ActiveRecord::Schema.define(version: 20140606162831) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
+    t.string   "username",        null: false
     t.string   "password_digest"
-    t.text     "bio"
-    t.string   "photo_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
