@@ -25,13 +25,7 @@ module Diggit
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.generators do |g|
-        g.test_framework :rspec,
         fixtures: true,
-        view_specs: true,
-        helper_specs: false,
-        routing_spec: false,
-        controller_specs: true,
-        request_specs: false
         g.fixture_placement :factory_girl, dir: "spec/factories"
     end
     config.i18n.enforce_available_locales = false
