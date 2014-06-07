@@ -4,7 +4,7 @@ class CreateSongs < ActiveRecord::Migration
       t.string :title
       t.string :artist
       t.string :album
-      t.belongs_to :user
+      t.references :user
 
       t.timestamps
     end
