@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140606162831) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "password_hash"
+    t.string   "password_digest"
     t.text     "bio"
     t.string   "photo_url"
     t.datetime "created_at"
