@@ -6,9 +6,9 @@ FactoryGirl.define do
     password "password"
     password_confirmation "password"
 
-      factory :invalid_user do
-        username nil
-      end
+    factory :invalid_user do
+      username nil
+    end
 
   end
 

@@ -2,9 +2,13 @@ require 'faker'
 
 FactoryGirl.define do
   factory :song do
-    association :user
-    title {Faker::Lorem.word(2)}
-    artist {Faker::Name.full_name}
-    album {Faker::Lorem.word}
+    title { Faker::Lorem.word }
+    artist { Faker::Name.name }
+    album { Faker::Lorem.word }
+    association :uploader, factory: :user
+
+    factory :invalid_song do
+      title nil
+    end
   end
 end
