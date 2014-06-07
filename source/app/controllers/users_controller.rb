@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   # before_action :authenticate, except: [:show, :new]
 
-  # def index
-  # end
-
   def show
     @user = User.find(params[:id])
     @apple = "Apple"
@@ -18,23 +15,17 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  # def edit
-  # end
-
-  # def update
-  # end
-
   def destroy
     User.find(params[:id]).destroy
     redirect_to root_path
   end
 
   def login
-    #params should come from AJAX
+    #params should come from AJAX (connor?)
   end
 
   def logout
-    #params should come from AJAX
+    #params should come from AJAX (connor?)
   end
 
   private
