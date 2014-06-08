@@ -27,13 +27,13 @@ h1#logo {
   position: fixed;
   z-index: 50;
 }
-.nav .login {
-    display: inline-block;
+.nav .sign-in-form {
+    display: none;
     position: fixed;
     right: 20%;
     top: 25px;
 }
-.login input {
+.sign-in-form input {
     display: inline-block;
     width: 20%;
     height: 1.75em;
@@ -41,8 +41,8 @@ h1#logo {
     text-shadow: 1px 1px 20px #333;
     background-color: #EEE;
 }
-.login #username,
-.login #password {
+.sign-in-form #username,
+.sign-in-form #password {
     display: inline-block;
     width: 35%;
     height: 2em;
@@ -58,7 +58,8 @@ h1#logo {
   color: white;
   margin-right: 10px;
 }
-.nav ul li:hover {
+.nav ul li:hover,
+.nav ul li a:hover {
   color: yellow;
 }
 .top-20-list {
@@ -101,4 +102,9 @@ div.song audio{
   bottom: 0;
 }
 
+.delete {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+}
 

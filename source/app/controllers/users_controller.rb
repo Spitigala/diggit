@@ -11,12 +11,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    session[:current_user_id] = @user.id
     redirect_to root_path
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    # current_user.destroy if logged_in?  # => need to figure out how to test this. possibly 'post :login, id: <some_id>' before doing destroy test?
+    current_user.destroy if logged_in?  # => need to figure out how to test this. possibly 'post :login, id: <some_id>' before doing destroy test?
+    session[:current_user_id] = nil
     redirect_to root_path
   end
 
@@ -24,12 +25,12 @@ class UsersController < ApplicationController
     if user = User.authenticate(params[:username], params[:password])
       session[:current_user_id] = user.id
     end
-    redirect_to root_path
+    redirect_to :back
   end
 
   def signout
     @_current_user = session[:current_user_id] = nil
-    redirect_to root_path    
+    redirect_to root_path  
   end
 
   private
