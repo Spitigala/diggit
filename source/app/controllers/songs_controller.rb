@@ -1,6 +1,7 @@
 class SongsController < ApplicationController
 
   def index
+    p User.all
     @songs = Song.all
   end
 
@@ -33,9 +34,9 @@ class SongsController < ApplicationController
   end
 
   def upvote
-    if Vote.where(voteable_type: "Song").find_by(voteable_id: params[:id])
-      vote = Vote.where(voteable_type: "Song").find_by(voteable_id: params[:id])
-      vote.update_attribute("value", 1)
+    vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
+    if vote
+      vote.change_vote_to!(1) if vote.value == -1
     else
       Vote.create(vote_params)
     end
@@ -43,9 +44,9 @@ class SongsController < ApplicationController
   end
 
   def downvote
-    if Vote.where(voteable_type: "Song").find_by(voteable_id: params[:id])
-      vote = Vote.where(voteable_type: "Song").find_by(voteable_id: params[:id])
-      vote.update_attribute("value", -1)
+    vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
+    if vote
+      vote.change_vote_to!(-1) if vote.value == 1
     else
       Vote.create(vote_params)
     end
