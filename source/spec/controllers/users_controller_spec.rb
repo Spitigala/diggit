@@ -60,7 +60,8 @@ describe UsersController do
   context "#destroy" do
     it "removes requested user from database" do
       expect {
-        delete :destroy, id: user
+        session[:current_user_id] = user.id
+        delete :destroy, id: user.id
       }.to change{ User.count }.by(-1)
     end
 
