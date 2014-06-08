@@ -17,14 +17,14 @@ Diggit::Application.routes.draw do
     end
   end
 
-  resources :users, except: [:index, :edit, :update] do
-    member do
-      post 'login'
-      post 'logout'
-    end
-  end
+  get 'users/signout' => 'users#signout'
+  resources :users, except: [:index, :edit, :update]
+  post 'users/signin' => 'users#signin'
+  # resources :sessions, only: [:create, :destroy]
 
-  post '/users/login', to: 'users#login'
-  post '/users/logout', to: 'users#logout'
+  # post '/users/login', to: 'users#login'
+  # post '/users/logout', to: 'users#logout'
+  # post 'sessions/new', to: 'sessions#create'
+  # post 'sessions/destroy', to: 'sessions#destroy'
 
 end

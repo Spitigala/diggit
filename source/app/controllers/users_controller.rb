@@ -16,15 +16,20 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
+    # current_user.destroy if logged_in?  # => need to figure out how to test this. possibly 'post :login, id: <some_id>' before doing destroy test?
     redirect_to root_path
   end
 
-  def login
-    #params should come from AJAX (connor?)
+  def signin
+    if user = User.authenticate(params[:username], params[:password])
+      session[:current_user_id] = user.id
+    end
+    redirect_to root_path
   end
 
-  def logout
-    #params should come from AJAX (connor?)
+  def signout
+    @_current_user = session[:current_user_id] = nil
+    redirect_to root_path    
   end
 
   private
