@@ -1,0 +1,21 @@
+<div class="nav">
+    
+<h1 id="logo">Dig[git]</h1>
+<nav>
+    <%= form_tag( {controller: 'users', action: 'signin'}, method: 'post', class: "login" ) do %>
+        <%= text_field_tag( :username ) %> 
+        <%= password_field_tag( :password ) %> 
+        <%= submit_tag( "Submit" ) %>
+    <% end %>
+    <ul>
+    <% if logged_in? %>
+        <li><%= link_to current_user.username, user_path( current_user ) %></li>
+        <li><%= link_to "Sign out", users_signout_path %></li>
+    <% else %>
+        <li>Sign in</li>
+        <li>Sign up</li>
+    <% end %>
+    </ul>
+</nav>
+
+</div>

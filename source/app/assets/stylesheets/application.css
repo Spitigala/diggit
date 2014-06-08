@@ -27,12 +27,33 @@ h1#logo {
   position: fixed;
   z-index: 50;
 }
+.nav .login {
+    display: inline-block;
+    position: fixed;
+    right: 20%;
+    top: 25px;
+}
+.login input {
+    display: inline-block;
+    width: 20%;
+    height: 1.75em;
+    color: white;
+    text-shadow: 1px 1px 20px #333;
+    background-color: #EEE;
+}
+.login #username,
+.login #password {
+    display: inline-block;
+    width: 35%;
+    height: 2em;
+}
 .nav ul {
   float: right;
-  margin-right: 100px;
+  margin-right: 50px;
   padding: 25px;
 }
-.nav ul li {
+.nav ul li,
+.nav ul li a {
   display: inline;
   color: white;
   margin-right: 10px;

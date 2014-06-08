@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Diggit</title>
+  <title>Dig[git]</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="nav">
-  <h1 id="logo">Diggit</h1>
-  <ul>
-    <li>Genres</li>
-    <li>Recent Uploads</li>
-    <li>Your Profile</li>
-  </ul>
-</div>
-
+<%= render template: "layouts/navbar" %>
 <%= yield %>
 
 </body>
