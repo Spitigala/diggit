@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # before_action :authenticate, except: [:show, :new]
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @apple = "Apple"
   end
 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    current_user.destroy
     redirect_to root_path
   end
 
