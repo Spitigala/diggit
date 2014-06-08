@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-
-  # def index
-  # end
+  # before_action :authenticate, except: [:show, :new]
 
   def show
     @user = User.find(params[:id])
+    @apple = "Apple"
   end
 
   def new
@@ -16,21 +15,22 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  # def edit
-  # end
-
-  # def update
-  # end
-
   def destroy
     User.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   def login
-    #NEED TO ADD CUSTOM ROUTE
+    #params should come from AJAX (connor?)
   end
 
   def logout
-    #NEED TO ADD CUSTOM ROUTE
+    #params should come from AJAX (connor?)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation, :password_digest)
   end
 end
