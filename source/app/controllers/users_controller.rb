@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   # before_action :authenticate, except: [:show, :new]
 
   def show
-    @user = current_user
-    @apple = "Apple"
+    @user = User.find(params[:id])
   end
 
   def new
