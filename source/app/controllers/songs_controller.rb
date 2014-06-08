@@ -34,9 +34,9 @@ class SongsController < ApplicationController
   end
 
   def upvote
-    if Vote.vote_exists?("Song", params[:id], params[:vote][:user_id])
-      vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
-      vote.change_vote_to!(1)
+    vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
+    if vote
+      vote.change_vote_to!(1) if vote.value == -1
     else
       Vote.create(vote_params)
     end
@@ -44,9 +44,9 @@ class SongsController < ApplicationController
   end
 
   def downvote
-    if Vote.vote_exists?("Song", params[:id], params[:vote][:user_id])
-      vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
-      vote.change_vote_to!(-1)
+    vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
+    if vote
+      vote.change_vote_to!(-1) if vote.value == 1
     else
       Vote.create(vote_params)
     end

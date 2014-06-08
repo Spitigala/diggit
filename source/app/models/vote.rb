@@ -3,10 +3,6 @@ class Vote < ActiveRecord::Base
   belongs_to :voteable, polymorphic: true
   belongs_to :voter, class_name: "User", foreign_key: :user_id
 
-  def self.vote_exists?(voteable_type, voteable_id, user_id)
-    Vote.where(voteable_type: voteable_type).where(voteable_id: voteable_id).where(user_id: user_id).any?
-  end
-
   def self.get_vote(voteable_type, voteable_id, user_id)
     votes = Vote.where(voteable_type: voteable_type).where(voteable_id: voteable_id).where(user_id: user_id)
     raise if votes.count > 1
