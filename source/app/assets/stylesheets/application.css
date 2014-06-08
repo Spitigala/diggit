@@ -16,12 +16,12 @@ h1#logo {
   width: 200px;
   float: left;
   color: white;
-  margin-left: 100px;
+  margin: 0 0 0 100px;
 }
 .nav {
   top: 0;
   left: 0;
-  height: 75px;
+  height: 50px;
   width: 100%;
   background-color: black;
   position: fixed;
@@ -31,7 +31,7 @@ h1#logo {
     display: none;
     position: fixed;
     right: 20%;
-    top: 25px;
+    top: 10px;
 }
 .sign-in-form input {
     display: inline-block;
@@ -50,7 +50,7 @@ h1#logo {
 .nav ul {
   float: right;
   margin-right: 50px;
-  padding: 25px;
+  padding: 10px;
 }
 .nav ul li,
 .nav ul li a {
@@ -62,44 +62,17 @@ h1#logo {
 .nav ul li a:hover {
   color: yellow;
 }
-.top-20-list {
-  width: 70%;
-  margin-top: 150px;
-}
 
 ol {
   list-style: none;
 }
 
-div.album-artwork {
-  width: 150px;
-  border:
-}
-
-div.song {
-  position: relative;
-  left: 0;
-  right: 0;
-  margin: auto;
-  margin-bottom: 20px;
-  width: 75%;
-  max-height: 250px;
-  padding: 10px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  border-radius: 10px;
-  background-color: #F2F2F2;
-}
-
-div.song h4 {
-  font-size: 1.3em;
-}
-
-div.song div{
-  display: inline-block;
-}
-div.song audio{
-  bottom: 0;
+.song {
+    width: 400px; 
+    height: 400px;
+    margin: 10px auto; 
+    color: black; 
+    overflow: hidden;
 }
 
 .delete {
