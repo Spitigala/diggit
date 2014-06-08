@@ -80,13 +80,15 @@ describe SongsController do
   end
 
   context '#upvote' do
-    it 'increases vote record count by 1 if user has not already voted' do
+    it 'create new vote record if user has not already voted' do
+    Vote.create(user_id: user.id, voteable: song, value: 1)
+    user2 = User.create(username: "voter2", password: "password", password_confirmation: "password")
       expect {
-        post :upvote, id: song, vote: {user_id: user.id, voteable: song, value: 1}
+        post :upvote, id: song, vote: {user_id: user2.id, voteable: song, value: 1}
       }.to change(Vote, :count).by(1)
     end
 
-    it 'does NOT increase vote record count if user has already voted' do
+    it 'does NOT create new vote record if user has already voted' do
       Vote.create(user_id: user.id, voteable: song, value: 1)
       expect {
         post :upvote, id: song, vote: {user_id: user.id, voteable: song, value: 1}
@@ -95,13 +97,15 @@ describe SongsController do
   end
 
   context '#downvote' do
-    it 'increases vote record count by 1 if user has not already voted' do
+    it 'creates new vote record if user has not already voted' do
+      Vote.create(user_id: user.id, voteable: song, value: 1)
+      user2 = User.create(username: "voter2", password: "password", password_confirmation: "password")
       expect {
-        post :downvote, id: song, vote: {user_id: user.id, voteable: song, value: -1}
+        post :downvote, id: song, vote: {user_id: user2.id, voteable: song, value: -1}
       }.to change(Vote, :count).by(1)
     end
 
-    it 'does NOT increase vote record count if user has already voted' do
+    it 'does NOT create new vote record if user has already voted' do
       Vote.create(user_id: user.id, voteable: song, value: 1)
       expect {
         post :upvote, id: song, vote: {user_id: user.id, voteable: song, value: 1}
