@@ -1,14 +1,13 @@
 <div id="navbar">
     
 <h1 id="logo">Dig[git]</h1>
-<%= form_for 
 <nav>
     <ul>
-    <% unless logged_in? %>
-        <li><%= link_to "Login", user_login_path %> </li>
+    <% if logged_in? %>
+        <li><%= link_to current_user.username, user_path( current_user ) %></li>
+        <li><%= link_to "Logout", session_destroy_path %></li>
     <% else %>
-        <li><%= link_to current_user.username, user_path( current_user )%></li>
-        <li><%= link_to "Logout", user_logout_path %></li>
+        <li><%= link_to "Login", session_create_path %> </li>
     <% end %>
     </ul>
 </nav>
