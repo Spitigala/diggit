@@ -1,7 +1,6 @@
 class SongsController < ApplicationController
 
   def index
-    p User.all
     @songs = Song.all
   end
 

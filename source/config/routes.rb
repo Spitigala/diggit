@@ -9,7 +9,7 @@ Diggit::Application.routes.draw do
       post 'upvote'
       post 'downvote'
     end
-    resources :comments do
+    resources :comments, except: [:index, :show, :new] do
       member do
         post 'upvote'
         post 'downvote'
