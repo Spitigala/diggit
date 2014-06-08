@@ -108,7 +108,7 @@ describe SongsController do
     it 'does NOT create new vote record if user has already voted' do
       Vote.create(user_id: user.id, voteable: song, value: 1)
       expect {
-        post :upvote, id: song, vote: {user_id: user.id, voteable: song, value: 1}
+        post :downvote, id: song, vote: {user_id: user.id, voteable: song, value: 1}
       }.to_not change(Vote, :count)
     end
   end
