@@ -34,34 +34,19 @@ class SongsController < ApplicationController
   end
 
   def upvote
-    puts ">>params[:vote] #{params[:vote]}"
-    puts ">>song_id: #{params[:id]}"
-    puts ">>All users"
-    p User.all
-    puts ".."
-    puts ">>All Votes"
-    p Vote.all
-    puts ".."
-    puts ">>Previous vote if any"
-    p Vote.where(voteable_type: "Song").where(voteable_id: params[:id]).where(user_id: params[:user_id])
-    puts ".."
-    unless Vote.where(voteable_type: "Song").where(voteable_id: params[:id]).where(user_id: params[:vote][:user_id]).empty?
-      puts "<<<<<<<<<< user already voted >>>>>>>>>>"
-      raise if Vote.where(voteable_type: "Song").where(voteable_id: params[:id]).where(user_id: params[:vote][:user_id]).count > 1
-      vote = Vote.where(voteable_type: "Song").where(voteable_id: params[:id]).where(user_id: params[:vote][:user_id])[0]
-      vote.update_attribute("value", 1)
+    if Vote.vote_exists?("Song", params[:id], params[:vote][:user_id])
+      vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
+      vote.change_vote_to!(1)
     else
-      puts "<<<<<<<<<< new vote >>>>>>>>>>"
       Vote.create(vote_params)
     end
     render nothing: true
   end
 
   def downvote
-    unless Vote.where(voteable_type: "Song").where(voteable_id: params[:id]).where(user_id: params[:vote][:user_id]).empty?
-      raise if Vote.where(voteable_type: "Song").where(voteable_id: params[:id]).where(user_id: params[:vote][:user_id]).count > 1
-      vote = Vote.where(voteable_type: "Song").where(voteable_id: params[:id]).where(user_id: params[:vote][:user_id])[0]
-      vote.update_attribute("value", 1)
+    if Vote.vote_exists?("Song", params[:id], params[:vote][:user_id])
+      vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
+      vote.change_vote_to!(-1)
     else
       Vote.create(vote_params)
     end
