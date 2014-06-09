@@ -1,11 +1,9 @@
 <% @songs.each do |song| %>
 
-<div class="song-overview">
+<div class="song-overview" data-url="<%= song.url %>">
     <%= link_to song.title, song_path( song ) %>
     <%= button_to "Play", class: 'show-player' %>
-    <div class="song">
-        <%= embed( song ).html_safe %>
-    </div>
+    <div class="song"></div>
 </div>
 
 <% end %>

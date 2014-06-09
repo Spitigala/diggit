@@ -4,14 +4,18 @@ function PickerDialog(){_ref1=PickerDialog.__super__.constructor.apply(this,argu
 SC.initialize();
 
 $(document).ready(function(){
-    $('.song-overview a').on('click', function(e){
+    $('.song-overview').submit(function(e){
         e.preventDefault();
         var self = this;
-        var track_url = $(this).attr('href');
-        SC.oEmbed(track_url, { auto_play: true }, function(oEmbed){
-            $(self).parent().append( "<div class='song'>" + oEmbed.html + "</div>" );
-        })
-
+        $('iframe').slideUp(500);
+        setTimeout(function(){
+            $('iframe').remove();
+            SC.oEmbed($(self).data('url'), { 'iframe': true, auto_play: true }, function(oEmbed) {
+              $(self).append( oEmbed.html );
+            $('iframe').hide();
+            $('iframe').slideDown(500);
+            });
+        }, 500);
     });
 });
 
