@@ -2,7 +2,8 @@ class SongsController < ApplicationController
   helper_method :embed
 
   def index
-    @songs = Song.all
+    @songs = Song.all.sort_by &:created_at
+    @songs.reverse!
   end
 
   def show
@@ -24,11 +25,6 @@ class SongsController < ApplicationController
     end
   end
 
-  # def edit
-  # end
-
-  # def update
-  # end
 
   def destroy
     Song.find(params[:id]).destroy
@@ -36,15 +32,10 @@ class SongsController < ApplicationController
   end
 
   def upvote
-    puts "[LOG] params: #{params.inspect}"
-    puts "[LOG] user_id: #{params[:vote][:user_id]}"
     vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
     if vote
-      puts "[LOG] inside if-- vote exists"
       vote.change_vote_to!(1) if vote.value == -1
     else
-      puts "[LOG] inside else-- new vote"
-      puts "[LOG] prepare_vote_params: #{prepare_vote_params(vote_params)}"
       Vote.create(prepare_vote_params(vote_params))
     end
     render nothing: true
@@ -52,7 +43,6 @@ class SongsController < ApplicationController
 
   def downvote
     vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
-    puts "[VOTE]: #{vote.inspect}"
     if vote
       vote.change_vote_to!(-1) if vote.value == 1
     else
