@@ -8,6 +8,7 @@ class SongsController < ApplicationController
   def show
     @comment = Comment.new
     @song = Song.find(params[:id])
+    @song_comments = @song.comments.sort_by &:created_at
   end
 
   def new
