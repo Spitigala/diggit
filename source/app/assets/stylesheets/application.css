@@ -12,6 +12,13 @@
  *= require_tree .
  */
 
+.content h1 {
+    color: #FFF;
+    font-size: 3em;
+    margin: 0;
+    background-color: #00848D;
+}
+
 
 h1#logo {
   float: left;
@@ -81,7 +88,8 @@ ol {
 
 .content {
     width: 100%;
-    margin: 50px auto 0;
+    padding: 40px 0;
+    margin: 0 auto;
     background-color: #68A26F;
     text-align: center;
 }
@@ -94,7 +102,7 @@ ol {
 
 .song-overview {
     display: inline-block;
-    height: 50px;
+    height: 45px;
     width: 800px;
     margin: 7px auto;
     background-color: #00848D;
@@ -140,6 +148,9 @@ ol {
     color: #FFFF00;
 }
 
+.vote-links {
+    display: inline-block;
+}
 
 .song-overview .vote-links a {
     font-size: .7em;
@@ -148,3 +159,49 @@ ol {
 .vote-links a:hover {
     color: #FFFF00;
 }
+
+.comment-list {
+    width: 600px;
+    margin: auto;
+    text-align: left;
+    color: #FFF;
+    list-style: none;
+}
+.comment-list li {
+    background-color: #00848D;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.comment-list li a.vote-link {
+    color: #FFBF40;
+}
+.comment-list li a.user-link {
+    color: #FFC3B2;
+}
+
+#new_comment {
+    margin: auto;
+    border-radius: 5px;
+    width: 590px;
+    height: 55px;
+    background-color: #00848D;
+}
+
+#new_comment input {
+    margin: 10px;
+    display: inline-block;
+}
+#new_comment #comment_content {
+    width: 60%;
+    float: left;
+}
+
+#new_comment input.submit-comment {
+    color: #FFF;
+    background: transparent;
+    border: none;
+    margin: 0;
+}
+#new_comment input.submit-comment:hover {
+    color: #FFFF00;

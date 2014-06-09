@@ -7,20 +7,22 @@
       <% @song_comments.each do |comment| %>
         <li>
           Comment: <%= comment.content %> <br>
-          [ <%= vote_total( comment ) %> ]
+          <span class="vote-total">[ <%= vote_total( comment ) %> ]</span>
           <% if logged_in? %>
-              <%= link_to "Upvote", upvote_song_comment_path( @song, comment, vote: { user_id: current_user.id, voteable_id: comment.id, voteable_type: "Comment", value: 1}), { method: 'post' } %> /
-              <%= link_to "Downvote", downvote_song_comment_path( @song, comment, vote: { user_id: current_user.id, voteable_id: comment.id, voteable_type: "Comment", value: -1}), { method: 'post' } %>
+              <div class="vote-links">
+                  <%= link_to "Upvote", upvote_song_comment_path( @song, comment, vote: { user_id: current_user.id, voteable_id: comment.id, voteable_type: "Comment", value: 1}), { method: 'post', class: "vote-link" } %> /
+                  <%= link_to "Downvote", downvote_song_comment_path( @song, comment, vote: { user_id: current_user.id, voteable_id: comment.id, voteable_type: "Comment", value: -1}), { method: 'post', class: "vote-link" } %>
+              </div>
           <% end %>
-          Posted By: <%= link_to comment.commenter.username, user_path(comment.commenter) %>
+          Posted By: <%= link_to comment.commenter.username, user_path(comment.commenter), class: "user-link" %>
         </li>
       <% end %>
     </ul>
 
     <% if logged_in? %>
       <%= form_for @comment, url: song_comments_path(@song) do |f| %>
-        Say Something! <%= f.text_field :content %> <br>
+        <%= f.text_field :content %> <br>
         <%= f.hidden_field :song_id, :value => @song.id %>
-        <%= f.submit %>
+        <%= f.submit value: "Post Comment", class: "submit-comment" %>
       <% end %>
     <% end %>
