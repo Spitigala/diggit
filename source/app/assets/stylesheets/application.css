@@ -16,8 +16,20 @@ h1#logo {
   width: 200px;
   float: left;
   color: white;
-  margin: 0 0 0 100px;
+  margin: 0 0 0 80px;
+  font-size: 3em;
+  position: fixed;
+  top: -13px;
 }
+
+h1#logo a {
+    color: white;
+}
+
+h1#logo a span {
+    color: yellow;
+}
+
 .nav {
   top: 0;
   left: 0;
@@ -84,8 +96,8 @@ ol {
     width: 800px;
     margin: 5px auto;
     background-color: #aaa;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
 }
 .song-overview p,
 .song-overview form {

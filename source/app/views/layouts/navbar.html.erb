@@ -1,6 +1,6 @@
 <div class="nav">
     
-<h1 id="logo">Dig[git]</h1>
+<h1 id="logo"><a href="<%= root_path %>">Dig<span>it</span></a></h1>
 <nav>
     <%= form_tag( {controller: 'users', action: 'signin'}, method: 'post', class: "sign-in-form" ) do %>
         <%= text_field_tag( :username ) %> 

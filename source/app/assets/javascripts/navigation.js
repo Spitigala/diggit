@@ -7,4 +7,13 @@ $(document).ready(function(){
                             opacity:"toggle"
                             },1000);
     });
+
+    $('h1#logo').hover(function(){
+        console.log('hovering');
+        $('h1 a').css("color", "yellow");
+        $('h1 a span').css("color", "white");
+    }, function(){
+        $('h1 a').css("color", "white");
+        $('h1 a span').css("color", "yellow");
+    });
 });
