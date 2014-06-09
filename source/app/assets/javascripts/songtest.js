@@ -7,30 +7,14 @@ $(document).ready(function(){
     $('.song-overview').submit(function(e){
         e.preventDefault();
         var self = this;
-        $('iframe').slideUp(500);
+        $('iframe').slideUp(1000);
         setTimeout(function(){
             $('iframe').remove();
             SC.oEmbed($(self).data('url'), { 'iframe': true, auto_play: true }, function(oEmbed) {
               $(self).append( oEmbed.html );
             $('iframe').hide();
-            $('iframe').slideDown(500);
+            $('iframe').slideDown(1000);
             });
-        }, 500);
+        }, 1000);
     });
 });
-
-// var track_url = 'https://soundcloud.com/xinobi/nicolas-jaar-and-i-say-xinobi';
-// SC.oEmbed(track_url, { 'iframe': true }, function(oEmbed) {
-//   $('body').append( "<div class='song'>" + oEmbed.html + "</div>" );
-//   console.log( oEmbed.title );
-// });
-
-// SC.oEmbed(track_url, { 'iframe': true }, function(oEmbed) {
-//   $('body').append( "<div class='song'>" + oEmbed.html + "</div>" );
-//   console.log( oEmbed.title );
-// });
-
-// SC.oEmbed(track_url, { 'iframe': true }, function(oEmbed) {
-//   $('body').append( "<div class='song'>" + oEmbed.html + "</div>" );
-//   console.log( oEmbed.title );
-// });
