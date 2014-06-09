@@ -72,14 +72,6 @@ ol {
     margin: 50px auto;
 }
 
-.song {
-    width: 400px; 
-    height: 400px;
-    margin: 10px auto; 
-    color: black;
-    display: none;
-}
-
 .delete {
     position: fixed;
     top: 50%;
