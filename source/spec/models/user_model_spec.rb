@@ -14,4 +14,11 @@ describe User do
 		it {should have_many :votes}
 	end
 
+	context "Validations" do
+		it {should_not allow_value(nil).for(:username)}
+		it {should_not allow_value(nil).for(:password)}
+		it {should allow_value("Insung123").for(:username)}
+		it {should allow_value("killinsung").for(:password)}
+	end
+
 end

@@ -8,9 +8,18 @@ describe Song do
   	end
 	end
 	
-	context "associations" do
+	context "Associations" do
 		it {should have_many (:votes)}
+		it {should have_many (:voters)}
 		it {should have_many (:comments)}
+		it {should have_many (:commenters)}
+	end
+
+	context "Validations" do
+		it {should_not allow_value(nil).for(:title)}
+		it {should_not allow_value(nil).for(:artist)}
+		it {should allow_value("Hit me baby one more time").for(:artist)}
+		it {should allow_value("Britney Spears").for(:artist)}
 	end
 
 end
