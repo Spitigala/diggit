@@ -68,7 +68,7 @@ ol {
 }
 
 .content {
-    width: 1000px;
+    width: 800px;
     margin: 50px auto;
 }
 
@@ -86,5 +86,18 @@ ol {
     right: 50%;
 }
 
+.song-overview {
+    display: inline-block;
+    height: 50px;
+    width: 800px;
+    margin: 5px auto;
+    background-color: lightgrey;
+}
+.song-overview p,
+.song-overview form {
+    display: inline-block;
+}
 
-
+#widget {
+    position: relative;
+}

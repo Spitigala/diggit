@@ -1,8 +1,10 @@
 <% @songs.each do |song| %>
 
 <div class="song-overview" data-url="<%= song.url %>">
-    <%= link_to song.title, song_path( song ) %>
-    <%= button_to "Play", class: 'show-player' %>
+    <p>
+        <%= link_to song.title, song_path( song ) %> by '<%= song.artist %>'
+        <%= button_to "Play", class: 'show-player' %>
+    </p>
     <div class="song"></div>
 </div>
 
