@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  helper_method :embed
+  helper_method :embed, :vote_total
 
   def index
     @songs = Song.all
@@ -51,6 +51,7 @@ class SongsController < ApplicationController
 
   def downvote
     vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
+    puts "[VOTE]: #{vote.inspect}"
     if vote
       vote.change_vote_to!(-1) if vote.value == 1
     else
@@ -64,6 +65,10 @@ class SongsController < ApplicationController
     embed_info = client.get('/oembed', :url => song_url)
 
     return embed_info['html']
+  end
+
+  def vote_total(song)
+    song.votes.inject(0){ |sum, vote| sum += vote.value }
   end
 
   private

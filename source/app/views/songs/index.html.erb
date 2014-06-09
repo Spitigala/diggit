@@ -3,9 +3,11 @@
 <div class="song-overview" data-url="<%= song.url %>">
     <p>
         '<%= link_to song.title, song_path( song ) %>' by '<%= song.artist %>'
-        <span style="padding: 0 10px 0 30px">[<%= song.votes.count %>]</span>
-        <%= link_to "Upvote", upvote_song_path( song, vote: { user_id: current_user.id, voteable_id: song, voteable_type: "Song", value: 1}), { method: 'post' } %> /
-        <%= link_to "Downvote", downvote_song_path( song, vote: { user_id: current_user.id, voteable_id: song, voteable_type: "Song", value: -1}), { method: 'post' } %>
+        <span style="padding: 0 10px 0 30px">[ <%= vote_total( song ) %> ]</span>
+        <% if logged_in? %>
+            <%= link_to "Upvote", upvote_song_path( song, vote: { user_id: current_user.id, voteable_id: song, voteable_type: "Song", value: 1}), { method: 'post' } %> /
+            <%= link_to "Downvote", downvote_song_path( song, vote: { user_id: current_user.id, voteable_id: song, voteable_type: "Song", value: -1}), { method: 'post' } %>
+        <% end %>
         <%= button_to "Play", { place: 'holder' }, class: 'play-button' %>
     </p>
     <div class="song"></div>
