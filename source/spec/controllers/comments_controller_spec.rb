@@ -6,20 +6,9 @@ describe CommentsController do
   let!(:song) { create :song }
 
   context '#create' do
-    it 'with valid attributes' do
-      session[:user_id] = user.id
-      expect{
-        post :create, song_id: song, comment: { content: "This is an awesome song" }
-        expect(response).to be_success
-      }.to change(Comment, :count).by(1)
-    end
+    it 'with valid attributes'
 
-    it 'with invalid attributes' do
-      session[:user_id] = user.id
-      expect {
-        post :create, song_id: song, comment: { content: nil }
-      }.to_not change(Comment, :count)
-    end
+    it 'with invalid attributes'
   end
 
   context '#edit' do
