@@ -27,6 +27,8 @@ describe SongsController do
       expect(response).to be_success
     end
 
+    it 'assigns an instance of Comment to @comment'
+
     it 'assigns requested song to @song' do
       get :show, id: song
       expect(assigns(:song)).to eq song

@@ -14,7 +14,13 @@
       <% end %>
     </ul>
 
-    <h1>***Comment Form Goes Here***</h1>
+    <% if logged_in? %>
+      <%= form_for @comment, url: song_comments_path(@song) do |f| %>
+        Say Something! <%= f.text_field :content %> <br>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+
 
 
 </div>
