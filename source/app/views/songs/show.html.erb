@@ -4,7 +4,7 @@
     </div>
 
     <ul>
-      <% @song.comments.each do |comment| %>
+      <% @song_comments.each do |comment| %>
         <li>
           Comment: <%= comment.content %> <br>
           Posted By: <%= link_to comment.commenter.username, user_path(comment.commenter) %>
@@ -15,6 +15,7 @@
     <% if logged_in? %>
       <%= form_for @comment, url: song_comments_path(@song) do |f| %>
         Say Something! <%= f.text_field :content %> <br>
+        <%= f.hidden_field :song_id, :value => @song.id %>
         <%= f.submit %>
       <% end %>
     <% end %>

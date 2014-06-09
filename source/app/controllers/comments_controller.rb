@@ -1,17 +1,19 @@
+require 'json'
+
 class CommentsController < ApplicationController
 
   def create
     #comments create from show_song_path
     #params coming from ajax
     comment = Comment.new(comment_params)
-    comment.user_id = session[:user_id]
-    comment.song_id = params[:song_id]
-    if comment.save
-      render nothing: true
-      return {content: comment.content, user_id: comment.user_id}
-    else
-      flash[:error] = comment.errors.full_messages
-      render nothing: true
+    comment.user_id = session[:current_user_id]
+    comment.song_id = params[:song_id].to_i
+
+    respond_to do |format|
+      if comment.save
+        response = {content: comment.content, user_id: comment.user_id, username: comment.commenter.username}
+        format.json { render :json => response}
+      end
     end
   end
 
@@ -61,7 +63,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :song_id)
   end
 
   def vote_params
