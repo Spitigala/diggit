@@ -7,8 +7,11 @@
       <% @song_comments.each do |comment| %>
         <li>
           Comment: <%= comment.content %> <br>
-          <%= link_to "Upvote", upvote_song_comment_path( @song, comment, vote: { user_id: current_user.id, voteable_id: comment.id, voteable_type: "Comment", value: 1}), { method: 'post' } %> /
-          <%= link_to "Downvote", downvote_song_comment_path( @song, comment, vote: { user_id: current_user.id, voteable_id: comment.id, voteable_type: "Comment", value: -1}), { method: 'post' } %>
+          [ <%= vote_total( comment ) %> ]
+          <% if logged_in? %>
+              <%= link_to "Upvote", upvote_song_comment_path( @song, comment, vote: { user_id: current_user.id, voteable_id: comment.id, voteable_type: "Comment", value: 1}), { method: 'post' } %> /
+              <%= link_to "Downvote", downvote_song_comment_path( @song, comment, vote: { user_id: current_user.id, voteable_id: comment.id, voteable_type: "Comment", value: -1}), { method: 'post' } %>
+          <% end %>
           Posted By: <%= link_to comment.commenter.username, user_path(comment.commenter) %>
         </li>
       <% end %>
