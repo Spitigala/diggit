@@ -35,11 +35,16 @@ class SongsController < ApplicationController
   end
 
   def upvote
+    puts "[LOG] params: #{params.inspect}"
+    puts "[LOG] user_id: #{params[:vote][:user_id]}"
     vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
     if vote
+      puts "[LOG] inside if-- vote exists"
       vote.change_vote_to!(1) if vote.value == -1
     else
-      Vote.create(vote_params)
+      puts "[LOG] inside else-- new vote"
+      puts "[LOG] prepare_vote_params: #{prepare_vote_params(vote_params)}"
+      Vote.create(prepare_vote_params(vote_params))
     end
     render nothing: true
   end
@@ -49,7 +54,7 @@ class SongsController < ApplicationController
     if vote
       vote.change_vote_to!(-1) if vote.value == 1
     else
-      Vote.create(vote_params)
+      Vote.create(prepare_vote_params(vote_params))
     end
     render nothing: true
   end
@@ -68,8 +73,15 @@ class SongsController < ApplicationController
   end
 
   def vote_params
-    params.require(:vote).permit(:user_id, :votable, :value)
+    params.require(:vote).permit(:user_id, :voteable_id, :voteable_type, :value)
   end
 
+  def prepare_vote_params(vote_params)
+    prepared_params = vote_params
+    prepared_params['user_id'] = vote_params['user_id'].to_i
+    prepared_params['voteable_id'] = vote_params['voteable_id'].to_i
+    prepared_params['value'] = vote_params['value'].to_i
+    prepared_params
+  end
 
 end

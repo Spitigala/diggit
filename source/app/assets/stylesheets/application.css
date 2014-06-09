@@ -110,9 +110,14 @@ ol {
     background-color: none;
 }
 
-.song-overview form input {
+.song-overview form input:focus {
+    color: yellow;
+}
+.song-overview form input,
+.song-overview form input:focus {
     background: transparent;
     border: none;
+    outline: none;
 }
 .song-overview form input:hover {
     color: yellow;
