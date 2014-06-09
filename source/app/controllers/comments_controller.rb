@@ -75,14 +75,4 @@ class CommentsController < ApplicationController
     params.require(:vote).permit(:user_id, :voteable_id, :voteable_type, :value)
   end
 
-  def prepare_vote_params(vote_params)
-    prepared_params = vote_params
-    prepared_params['user_id'] = vote_params['user_id'].to_i
-    puts "[LOG] inside prepare_vote_params-- voteable_id: #{prepared_params['voteable_id']}"
-    prepared_params['voteable_id'] = vote_params['voteable_id'].to_i
-    puts "[LOG] inside prepare_vote_params-- voteable_id: #{prepared_params['voteable_id']}"
-    prepared_params['value'] = vote_params['value'].to_i
-    prepared_params
-  end
-
 end

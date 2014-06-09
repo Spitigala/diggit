@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  helper_method :embed, :vote_total
+  helper_method :embed
 
   def index
     @songs = Song.all
@@ -68,10 +68,6 @@ class SongsController < ApplicationController
     return embed_info['html']
   end
 
-  def vote_total(song)
-    song.votes.inject(0){ |sum, vote| sum += vote.value }
-  end
-
   private
 
   def song_params
@@ -80,14 +76,6 @@ class SongsController < ApplicationController
 
   def vote_params
     params.require(:vote).permit(:user_id, :voteable_id, :voteable_type, :value)
-  end
-
-  def prepare_vote_params(vote_params)
-    prepared_params = vote_params
-    prepared_params['user_id'] = vote_params['user_id'].to_i
-    prepared_params['voteable_id'] = vote_params['voteable_id'].to_i
-    prepared_params['value'] = vote_params['value'].to_i
-    prepared_params
   end
 
 end
