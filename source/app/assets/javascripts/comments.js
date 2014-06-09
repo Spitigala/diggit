@@ -13,10 +13,14 @@ $(document).ready(function() {
             },
             dataType: "json"
         }).done(function(response) {
-            console.log(response);
-            var comment = '<li>Comment: ' + response.content + '<br>'
-            comment += 'Posted By: <a href="/users/' + response.user_id + '">' + response.username + '</a></li>'
-            $('.comment-list').append(comment);
+
+            var comment = '<li class="hidden">' + response.content + '<br>'
+            comment += '<span class="vote-total">[ 0 ]</span>'
+            // comment += '<div class="vote-links">'
+            comment += ' Posted By: <a href="/users/' + response.user_id + '">' + response.username + '</a></li>'
+
+            $('.comment-list ul').prepend(comment);
+            $('.comment-list ul li:first-child').slideDown(500);
         }, "json" )
     })
 
