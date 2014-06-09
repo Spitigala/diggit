@@ -15,6 +15,7 @@ $(document).ready(function(){
             $('iframe').hide();
             $('iframe').slideDown(1000);
             });
-        }, 1000);
+        }, $('iframe').length > 0 ? 1000 : 0 );
     });
+    $($('.song-overview')[0]).click();
 });
