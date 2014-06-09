@@ -17,7 +17,7 @@ $(document).ready(function() {
             var comment = '<li>Comment: ' + response.content + '<br>'
             comment += 'Posted By: <a href="/users/' + response.user_id + '">' + response.username + '</a></li>'
             $('.comment-list').append(comment);
-        })
+        }, "json" )
     })
 
 

@@ -101,6 +101,9 @@ ol {
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
 }
+.song-overview p {
+    float: left;
+}
 .song-overview p,
 .song-overview form {
     color: #FFF;
