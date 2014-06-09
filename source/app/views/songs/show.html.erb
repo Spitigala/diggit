@@ -3,7 +3,7 @@
         <%= embed( @song.url ).html_safe %>
     </div>
 
-    <ul>
+    <ul class="comment-list">
       <% @song_comments.each do |comment| %>
         <li>
           Comment: <%= comment.content %> <br>
