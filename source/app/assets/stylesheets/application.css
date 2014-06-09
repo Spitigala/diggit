@@ -19,6 +19,10 @@
     background-color: #00848D;
 }
 
+.hidden {
+  display: none;
+}
+
 
 h1#logo {
   float: left;
@@ -161,11 +165,16 @@ ol {
 }
 
 .comment-list {
+  margin-top: 20px;
+}
+
+.comment-list ul {
     width: 600px;
     margin: auto;
     text-align: left;
     color: #FFF;
     list-style: none;
+    margin-top: 100px;
 }
 .comment-list li {
     background-color: #00848D;
@@ -181,7 +190,7 @@ ol {
 }
 
 #new_comment {
-    margin: auto;
+    margin: 20px auto 0 auto;
     border-radius: 5px;
     width: 590px;
     height: 55px;
@@ -193,15 +202,17 @@ ol {
     display: inline-block;
 }
 #new_comment #comment_content {
-    width: 60%;
+    width: 75%;
     float: left;
 }
 
 #new_comment input.submit-comment {
     color: #FFF;
+    font-size: 1.6em;
     background: transparent;
     border: none;
-    margin: 0;
+    margin: auto;
+    padding-bottom: 10px;
 }
 #new_comment input.submit-comment:hover {
     color: #FFFF00;
