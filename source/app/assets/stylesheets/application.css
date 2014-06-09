@@ -76,8 +76,8 @@ ol {
     width: 400px; 
     height: 400px;
     margin: 10px auto; 
-    color: black; 
-    overflow: hidden;
+    color: black;
+    display: none;
 }
 
 .delete {
@@ -85,4 +85,6 @@ ol {
     top: 50%;
     right: 50%;
 }
+
+
 
