@@ -52,6 +52,7 @@ class SongsController < ApplicationController
 
   def downvote
     vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
+    puts "[VOTE]: #{vote.inspect}"
     if vote
       vote.change_vote_to!(-1) if vote.value == 1
     else
@@ -75,14 +76,6 @@ class SongsController < ApplicationController
 
   def vote_params
     params.require(:vote).permit(:user_id, :voteable_id, :voteable_type, :value)
-  end
-
-  def prepare_vote_params(vote_params)
-    prepared_params = vote_params
-    prepared_params['user_id'] = vote_params['user_id'].to_i
-    prepared_params['voteable_id'] = vote_params['voteable_id'].to_i
-    prepared_params['value'] = vote_params['value'].to_i
-    prepared_params
   end
 
 end

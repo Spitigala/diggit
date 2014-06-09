@@ -11,6 +11,6 @@ class Vote < ActiveRecord::Base
 
   def change_vote_to!(value)
     raise unless [1, -1].include?(value)
-    self.update_attribute("value", -1)
+    self.update_attribute("value", value)
   end
 end
