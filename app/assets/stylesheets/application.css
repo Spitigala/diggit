@@ -1,0 +1,207 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+.content h1 {
+    color: #FFF;
+    font-size: 3em;
+    margin: 0;
+    background-color: #00848D;
+}
+
+
+h1#logo {
+  float: left;
+  color: white;
+  margin: 0 0 0 80px;
+  font-size: 3em;
+  position: fixed;
+  top: -13px;
+}
+
+h1#logo a {
+    color: white;
+}
+
+h1#logo a span {
+    color: #FFFF00;
+}
+
+.nav {
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background-color: #002647;
+  position: fixed;
+  z-index: 50;
+}
+.nav .sign-in-form {
+    display: none;
+    position: fixed;
+    right: 20%;
+    top: 10px;
+}
+.sign-in-form input {
+    display: inline-block;
+    width: 20%;
+    height: 1.75em;
+    color: white;
+    text-shadow: 1px 1px 20px #333;
+    background-color: #EEE;
+}
+.sign-in-form #username,
+.sign-in-form #password {
+    display: inline-block;
+    width: 35%;
+    height: 2em;
+}
+.nav ul {
+  float: right;
+  margin-right: 50px;
+  padding: 10px;
+}
+.nav ul li,
+.nav ul li a {
+  display: inline;
+  color: white;
+  margin-right: 10px;
+}
+.nav ul li:hover,
+.nav ul li a:hover {
+  color: #FFFF00;
+}
+
+ol {
+  list-style: none;
+}
+
+.content {
+    width: 100%;
+    padding: 40px 0;
+    margin: 0 auto;
+    background-color: #68A26F;
+    text-align: center;
+}
+
+.delete {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+}
+
+.song-overview {
+    display: inline-block;
+    height: 45px;
+    width: 800px;
+    margin: 7px auto;
+    background-color: #00848D;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+.song-overview p {
+    float: left;
+}
+.song-overview p,
+.song-overview form {
+    color: #FFF;
+    display: inline-block;
+    font-size: 1.7em;
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+.song-overview a {
+    color: #FFC3B2;
+}
+.song-overview a:hover {
+    color: #FFFF00;
+}
+
+.song-overview form {
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+    background-color: none;
+}
+
+.song-overview form input:focus {
+    color: #FFFF00;
+}
+.song-overview form input,
+.song-overview form input:focus {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.song-overview form input:hover {
+    color: #FFFF00;
+}
+
+.vote-links {
+    display: inline-block;
+}
+
+.song-overview .vote-links a {
+    font-size: .7em;
+    color: #FFBF40;
+}
+.vote-links a:hover {
+    color: #FFFF00;
+}
+
+.comment-list {
+    width: 600px;
+    margin: auto;
+    text-align: left;
+    color: #FFF;
+    list-style: none;
+}
+.comment-list li {
+    background-color: #00848D;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.comment-list li a.vote-link {
+    color: #FFBF40;
+}
+.comment-list li a.user-link {
+    color: #FFC3B2;
+}
+
+#new_comment {
+    margin: auto;
+    border-radius: 5px;
+    width: 590px;
+    height: 55px;
+    background-color: #00848D;
+}
+
+#new_comment input {
+    margin: 10px;
+    display: inline-block;
+}
+#new_comment #comment_content {
+    width: 60%;
+    float: left;
+}
+
+#new_comment input.submit-comment {
+    color: #FFF;
+    background: transparent;
+    border: none;
+    margin: 0;
+}
+#new_comment input.submit-comment:hover {
+    color: #FFFF00;
