@@ -3,8 +3,6 @@ require 'json'
 class CommentsController < ApplicationController
 
   def create
-    #comments create from show_song_path
-    #params coming from ajax
     comment = Comment.new(comment_params)
     comment.user_id = session[:current_user_id]
     comment.song_id = params[:song_id].to_i
@@ -41,15 +39,10 @@ class CommentsController < ApplicationController
   end
 
   def upvote
-    puts "[LOG] params: #{params.inspect}"
-    puts "[LOG] user_id: #{params[:vote][:user_id]}"
     vote = Vote.get_vote("Comment", params[:id], params[:vote][:user_id])
     if vote
-      puts "[LOG] inside if-- vote exists"
       vote.change_vote_to!(1) if vote.value == -1
     else
-      puts "[LOG] inside else-- new vote"
-      puts "[LOG] prepare_vote_params: #{prepare_vote_params(vote_params)}"
       Vote.create(prepare_vote_params(vote_params))
     end
     render nothing: true
