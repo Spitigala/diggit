@@ -6,6 +6,7 @@ class SongsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @song = Song.find(params[:id])
   end
 
@@ -53,9 +54,9 @@ class SongsController < ApplicationController
     render nothing: true
   end
 
-  def embed(song)
+  def embed(song_url)
     client = Soundcloud.new(client_id: 'aa14d6213fea0d5d0dce993ef44097e2')
-    embed_info = client.get('/oembed', :url => song.url)
+    embed_info = client.get('/oembed', :url => song_url)
 
     return embed_info['html']
   end
@@ -63,7 +64,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title, :artist, :album)
+    params.require(:song).permit(:title, :artist, :url)
   end
 
   def vote_params

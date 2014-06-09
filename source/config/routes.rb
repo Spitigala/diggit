@@ -4,6 +4,7 @@ Diggit::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'songs#index'
+  post 'songs/embed' => 'songs#embed'
   resources :songs, except: [:edit, :update] do
     member do
       post 'upvote'
