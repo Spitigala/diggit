@@ -1,0 +1,21 @@
+<div class="song-overview">
+
+    <h1><%= @song.title %></h1>
+    <div class="song">
+        <%= embed( @song ).html_safe %>
+    </div>
+
+    <ul>
+      <% @song.comments.each do |comment| %>
+        <li>
+          Comment: <%= comment.content %> <br>
+          Posted By: <%= link_to comment.commenter.username, user_path(comment.commenter) %>
+        </li>
+      <% end %>
+    </ul>
+
+    <h1>***Comment Form Goes Here***</h1>
+
+
+</div>
+
