@@ -8,7 +8,7 @@ $(document).ready(function(){
         e.preventDefault();
         var self = this;
         var track_url = $(this).attr('href');
-        SC.oEmbed(track_url, function(oEmbed){
+        SC.oEmbed(track_url, { auto_play: true }, function(oEmbed){
             $(self).parent().append( "<div class='song'>" + oEmbed.html + "</div>" );
         })
 

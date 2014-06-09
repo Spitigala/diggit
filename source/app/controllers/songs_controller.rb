@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  helper_method :embed
 
   def index
     @songs = Song.all
@@ -50,6 +51,13 @@ class SongsController < ApplicationController
       Vote.create(vote_params)
     end
     render nothing: true
+  end
+
+  def embed(song)
+    client = Soundcloud.new(client_id: 'aa14d6213fea0d5d0dce993ef44097e2')
+    embed_info = client.get('/oembed', :url => song.url)
+
+    return embed_info['html']
   end
 
   private
