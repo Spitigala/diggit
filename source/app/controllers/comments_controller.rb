@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
   def create
     #comments create from show_song_path
     #params coming from ajax
+    puts "^" * 100
+    p params
     comment = Comment.new(comment_params)
     comment.user_id = session[:user_id]
     comment.song_id = params[:song_id]

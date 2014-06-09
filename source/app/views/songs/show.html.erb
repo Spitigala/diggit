@@ -17,6 +17,7 @@
     <% if logged_in? %>
       <%= form_for @comment, url: song_comments_path(@song) do |f| %>
         Say Something! <%= f.text_field :content %> <br>
+        <%= f.hidden_field :song_id, :value => @song.id %>
         <%= f.submit %>
       <% end %>
     <% end %>
