@@ -2,7 +2,7 @@
 
 <div class="song-overview" data-url="<%= song.url %>">
     <p>
-        <%= link_to song.title, song_path( song ) %> by '<%= song.artist %>'
+        '<%= link_to song.title, song_path( song ) %>' by '<%= song.artist %>'
         <%= button_to "Play", class: 'show-player' %>
     </p>
     <div class="song"></div>

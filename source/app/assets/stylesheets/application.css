@@ -83,13 +83,37 @@ ol {
     height: 50px;
     width: 800px;
     margin: 5px auto;
-    background-color: lightgrey;
+    background-color: #aaa;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 .song-overview p,
 .song-overview form {
+    color: #FFF;
     display: inline-block;
+    font-size: 1.7em;
+    margin-bottom: 0;
+    padding-left: 20px;
 }
 
-#widget {
-    position: relative;
+.song-overview a {
+    color: #FFF;
+}
+.song-overview a:hover {
+    color: yellow;
+}
+
+.song-overview form {
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+    background-color: none;
+}
+
+.song-overview form input {
+    background: transparent;
+    border: none;
+}
+.song-overview form input:hover {
+    color: yellow;
 }
