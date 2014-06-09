@@ -12,18 +12,37 @@
  *= require_tree .
  */
 
+.content h1 {
+    color: #FFF;
+    font-size: 3em;
+    margin: 0;
+    background-color: #00848D;
+}
+
+
 h1#logo {
-  width: 200px;
   float: left;
   color: white;
-  margin: 0 0 0 100px;
+  margin: 0 0 0 80px;
+  font-size: 3em;
+  position: fixed;
+  top: -13px;
 }
+
+h1#logo a {
+    color: white;
+}
+
+h1#logo a span {
+    color: #FFFF00;
+}
+
 .nav {
   top: 0;
   left: 0;
   height: 50px;
   width: 100%;
-  background-color: black;
+  background-color: #002647;
   position: fixed;
   z-index: 50;
 }
@@ -60,7 +79,7 @@ h1#logo {
 }
 .nav ul li:hover,
 .nav ul li a:hover {
-  color: yellow;
+  color: #FFFF00;
 }
 
 ol {
@@ -68,8 +87,11 @@ ol {
 }
 
 .content {
-    width: 800px;
-    margin: 50px auto;
+    width: 100%;
+    padding: 40px 0;
+    margin: 0 auto;
+    background-color: #68A26F;
+    text-align: center;
 }
 
 .delete {
@@ -80,12 +102,15 @@ ol {
 
 .song-overview {
     display: inline-block;
-    height: 50px;
+    height: 45px;
     width: 800px;
-    margin: 5px auto;
-    background-color: #aaa;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    margin: 7px auto;
+    background-color: #00848D;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+.song-overview p {
+    float: left;
 }
 .song-overview p,
 .song-overview form {
@@ -97,10 +122,10 @@ ol {
 }
 
 .song-overview a {
-    color: #FFF;
+    color: #FFC3B2;
 }
 .song-overview a:hover {
-    color: yellow;
+    color: #FFFF00;
 }
 
 .song-overview form {
@@ -111,7 +136,7 @@ ol {
 }
 
 .song-overview form input:focus {
-    color: yellow;
+    color: #FFFF00;
 }
 .song-overview form input,
 .song-overview form input:focus {
@@ -120,5 +145,63 @@ ol {
     outline: none;
 }
 .song-overview form input:hover {
-    color: yellow;
+    color: #FFFF00;
 }
+
+.vote-links {
+    display: inline-block;
+}
+
+.song-overview .vote-links a {
+    font-size: .7em;
+    color: #FFBF40;
+}
+.vote-links a:hover {
+    color: #FFFF00;
+}
+
+.comment-list {
+    width: 600px;
+    margin: auto;
+    text-align: left;
+    color: #FFF;
+    list-style: none;
+}
+.comment-list li {
+    background-color: #00848D;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.comment-list li a.vote-link {
+    color: #FFBF40;
+}
+.comment-list li a.user-link {
+    color: #FFC3B2;
+}
+
+#new_comment {
+    margin: auto;
+    border-radius: 5px;
+    width: 590px;
+    height: 55px;
+    background-color: #00848D;
+}
+
+#new_comment input {
+    margin: 10px;
+    display: inline-block;
+}
+#new_comment #comment_content {
+    width: 60%;
+    float: left;
+}
+
+#new_comment input.submit-comment {
+    color: #FFF;
+    background: transparent;
+    border: none;
+    margin: 0;
+}
+#new_comment input.submit-comment:hover {
+    color: #FFFF00;

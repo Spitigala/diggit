@@ -45,7 +45,9 @@ class CommentsController < ApplicationController
     else
       Vote.create(prepare_vote_params(vote_params))
     end
-    render nothing: true
+    respond_to do |format|
+      format.json { render :json => { voteTotal: vote_total(Comment.find(params[:id])) } }
+    end
   end
 
   def downvote
@@ -55,7 +57,9 @@ class CommentsController < ApplicationController
     else
       Vote.create(prepare_vote_params(vote_params))
     end
-    render nothing: true
+    respond_to do |format|
+      format.json { render :json => { voteTotal: vote_total(Comment.find(params[:id])) } }
+    end
   end
 
   private

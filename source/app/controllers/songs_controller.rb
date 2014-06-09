@@ -38,17 +38,22 @@ class SongsController < ApplicationController
     else
       Vote.create(prepare_vote_params(vote_params))
     end
-    render nothing: true
+    respond_to do |format|
+      format.json { render :json => { voteTotal: vote_total(Song.find(params[:id])) } }
+    end
   end
 
   def downvote
     vote = Vote.get_vote("Song", params[:id], params[:vote][:user_id])
+    
     if vote
       vote.change_vote_to!(-1) if vote.value == 1
     else
       Vote.create(prepare_vote_params(vote_params))
     end
-    render nothing: true
+    respond_to do |format|
+      format.json { render :json => { voteTotal: vote_total(Song.find(params[:id])) } }
+    end
   end
 
   def embed(song_url)
