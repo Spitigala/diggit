@@ -67,6 +67,11 @@ ol {
   list-style: none;
 }
 
+.content {
+    width: 1000px;
+    margin: 50px auto;
+}
+
 .song {
     width: 400px; 
     height: 400px;

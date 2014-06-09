@@ -3,6 +3,6 @@
 <%= form_for @song, url: {action: "create"} do |f| %>
   Title <%= f.text_field :title %>
   Artist <%= f.text_field :artist %>
-  Album <%= f.text_field :album %>
+  url <%= f.text_field :album %>
   <%= f.submit %>
 <% end %>
